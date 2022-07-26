@@ -5,6 +5,7 @@ from random import shuffle
 import os
 from time import sleep
 
+
 SUITS = ['♠️','♥️','♣️','♦️']
 VALUES = {'A': 11, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9 ,'10':10, 'J':10, 'Q':10 ,'K':10}
 
@@ -107,9 +108,7 @@ def deal_cards(num_players, player_hands):
   return player_hands
     
 
-
 def calculate_hand(player, player_hands): 
-  
   """
   Calculates the players current hand point total.
       Keyword arguments:
@@ -127,6 +126,7 @@ def calculate_hand(player, player_hands):
     point_total += VALUES[card.value()]
   
   return point_total
+
   
 def curr_cards(player, player_hands):
   
@@ -158,7 +158,7 @@ def play_turn(player, player_hands):
       player_hands[player].append(deck.hit()) 
       total = calculate_hand(player, player_hands)
       curr_cards(player, player_hands)
-
+      
   # End of turn, prints players total & cards or lets them know they lost
   if total > 21:
     print("Your hand went above 21. You lost!")
@@ -187,7 +187,7 @@ def dealer_turn(player, player_hands):
     dealer_total += VALUES[card.value()]
 
   if dealer_total <= 16:
-    print(f"The dealers first hand was equal to {dealer_total}. They must hit again.")
+    print(f"The dealers hand was equal to {dealer_total}. They must hit again.")
     while dealer_total <= 16:
       dealers_hand.append(deck.hit())
       dealer_total += VALUES[deck.hit().value()]
@@ -206,7 +206,6 @@ def dealer_turn(player, player_hands):
   
   return winners
   
-  pass
 
 def declare_winner(winners):
   """
@@ -220,12 +219,10 @@ def declare_winner(winners):
     print(f"Congratulations Player {player}! You have won this round.")
     print()
     
-  # fucking weeb
   # Checks to see if the list of winners is empty and let's the dealer know they won
   if len(winners) == 0: 
     print("The dealer has won this round.")
-      
-  pass
+    print()
   
 
 def play_blackjack(players, player_hands):
@@ -241,9 +238,9 @@ def play_blackjack(players, player_hands):
   player_hands = deal_cards(players, player_hands)
   for player in range(1, players + 1):
     play_turn(player, player_hands)
-    # sleep(2)
-    # os.system('clear')
-    # sleep(1)
+    sleep(2)
+    os.system('clear')
+    sleep(0.5)
 
   winners = dealer_turn(players, player_hands)
   declare_winner(winners)
@@ -252,10 +249,8 @@ def play_blackjack(players, player_hands):
   keep_playing = input("Do you want to continue playing? (Y/N) ").upper()
   if keep_playing == "Y":
     os.system('clear')
-    sleep(1)
+    sleep(0.5)
     blackjack()
-  
-  pass
 
 
 def blackjack():
@@ -265,8 +260,16 @@ def blackjack():
   is passed when the game starts. No other code should be in here but any code that is necessary
   prior to the first turn of the game.
   """
+  # Waits for user to press enter before continuing on to the game
+  print("Hi! Welcome to BLACKJACK.")
+  input("Press 'Enter' to continue.")
+  os.system('clear')
+  sleep(0.5)
+  
   # Gets the amount of players then begins game
   players = int(input("How many players will there be? "))
+  os.system('clear')
+  sleep(0.5)
   play_blackjack(players, {})
 
 
