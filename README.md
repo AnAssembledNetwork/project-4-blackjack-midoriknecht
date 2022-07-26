@@ -1,5 +1,5 @@
 # Blackjack
-This is my interpretation of the popular casino game Blackjack, or sometimes also known as 21 in python 3. The game allows for multiple players and gives users the option of hitting or staying. After the game ends, the program asks the users if they would like to play again or not and restarts the game if yes. 
+This is my interpretation of the popular casino game Blackjack, sometimes also known as 21, in python 3. The game allows for multiple players and gives users the option of hitting or staying. After the game ends, the program asks the users if they would like to play again or not and restarts the game if yes. 
 
 ## Input
 1. Asks for the user to press the enter key if they would like to continue
